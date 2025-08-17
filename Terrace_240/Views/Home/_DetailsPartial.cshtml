@@ -1,0 +1,11 @@
+﻿@model Terrace_240.DAL.Model.Movie
+<div class="modal-movie-info">
+    <img src="@(string.IsNullOrWhiteSpace(Model.PosterUrl) ? "/images/fallback.png" : Model.PosterUrl)" alt="@Model.Title" style="width:200px" />
+    <div>
+        <h2>@Model.Title</h2>
+        <p><strong>Год:</strong> @Model.Year</p>
+        <p><strong>Жанр:</strong> @Model.Genre</p>
+        <p><strong>Рейтинг:</strong> @Model.Rating</p>
+        <p>@Model.Description</p>
+    </div>
+</div>

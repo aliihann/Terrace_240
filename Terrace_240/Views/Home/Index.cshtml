@@ -1,0 +1,125 @@
+﻿@model IEnumerable<Terrace_240.DAL.Model.Movie>
+
+<title>Tarrace240 - Летний кинотеатр</title>
+<link rel="stylesheet" href="~/css/style.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<header class="header">
+    <div class="container">
+        <div class="header-content">
+            <div class="logo">
+                <img src="~/uploads/Image_240.jpg" alt="Tarrace240" class="logo-image">
+                <span class="tagline">Летний кинотеатр под открытым небом</span>
+            </div>
+            <nav class="nav">
+                <a href="#" class="nav-link active">Афиша</a>
+                <a asp-action="Login" asp-controller="Admin" class="nav-link admin-link">
+                    <i class="fas fa-user"></i> Админ
+                </a>
+            </nav>
+        </div>
+    </div>
+</header>
+<body>
+    <!-- Header -->
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-stars"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="hero-title">Кино под звездами</h2>
+                <p class="hero-subtitle">Незабываемые вечера в летнем кинотеатре под открытым небом</p>
+                <div class="hero-features">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-ticket-alt"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Доступные цены</h3>
+                            <p>Билеты всего 300₽</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Вечерние сеансы</h3>
+                            <p>С 19:30 до 02:00</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Удобное место</h3>
+                            <p>Рио 3-этаж</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="movies">
+        <div class="movies-grid">
+            @foreach (var m in Model)
+            {
+                <div class="movie-card">
+                    <img src="@(string.IsNullOrWhiteSpace(m.PosterUrl) ? "/images/fallback.png" : m.PosterUrl)" alt="@m.Title" class="movie-poster" />
+                    <div class="movie-info">
+                        <h3 style="color: white">@m.Title</h3>
+                        <div class="movie-meta">
+                            <span style="color: white">@m.Year</span>
+                            <span style="color: white">@m.Rating</span>
+                        </div>
+                        <div class="movie-genre">@m.Genre</div>
+                        <div class="movie-schedule">
+                            <div class="schedule-title">Сеансы</div>
+                            <div class="schedule-times">
+                                @{
+                                    var parts = (m.ScheduleTimes ?? "").Split(',', System.StringSplitOptions.RemoveEmptyEntries);
+                                    foreach (var t in parts)
+                                    {
+                                        <span class="time-slot">@t.Trim()</span>
+                                    }
+                                }
+                            </div>
+                            <div class="price">@m.Price ₽</div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Tarrace240</h3>
+                    <p>Летний кинотеатр под открытым небом</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <p>📍 Терраса 240</p>
+                    <p>📞 +7 (938) 137-95-95</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Режим работы</h4>
+                    <p>Ежедневно с 19:30 до 02:00</p>
+                    <p>Касса работает до 02:00</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Tarrace240. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+
+

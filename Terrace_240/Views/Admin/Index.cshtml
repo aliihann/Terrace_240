@@ -1,0 +1,136 @@
+﻿@model IEnumerable<Terrace_240.DAL.Model.Movie>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель - Tarrace240</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/admin-dashboard.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="~/uploads/Image_240.jpg" alt="Tarrace240" class="logo-image">
+                <span class="logo-text">Tarrace240</span>
+            </div>
+            <nav class="nav">
+                <a asp-controller="Home" asp-action="Index" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Афиша</span>
+                </a>
+                <a href="/Admin/ChangePassword" class="nav-link">
+                    <i class="fas fa-key"></i>
+                    <span>Пароль</span>
+                </a>
+                <a href="/Admin/Logout" class="nav-link logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Выход</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="page-header">
+                <h1>Управление афишей</h1>
+                <p>Добавляйте, редактируйте и удаляйте фильмы в афише</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="totalMovies">3</h3>
+                        <p>Всего фильмов</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="avgRating">8.0</h3>
+                        <p>Средний рейтинг</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-ruble-sign"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="avgPrice">300</h3>
+                        <p>Средняя цена</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <a href="/Admin/Create" class="btn btn-primary">
+                    <i class="fas fa-plus"></i>
+                    Добавить фильм
+                </a>
+            </div>
+
+            <div class="movies-section">
+                <h2>Список фильмов</h2>
+                <div class="movies-table-container">
+                    <table class="movies-table">
+                        <thead>
+                            <tr>
+                                <th>Постер</th>
+                                <th>Название</th>
+                                <th>Год</th>
+                                <th>Жанр</th>
+                                <th>Рейтинг</th>
+                                <th>Цена</th>
+                                <th>Действия</th>
+                            </tr>
+                            @foreach (var m in Model)
+                            {
+                                <tr>
+                                    <td> <img src="@(string.IsNullOrWhiteSpace(m.PosterUrl) ? "/images/fallback.png" : m.PosterUrl)" alt="@m.Title" class="movie-poster" /> </td>
+                                    <td style ="color: white">@m.Title</td>
+                                    <td style ="color: white">@m.Year</td>
+                                    <td style ="color: white">@m.Genre</td>
+                                    <td style="color: white">@m.Rating</td>
+                                    <td style="color: white">@m.Price</td>
+                                    <td>
+                                        <a class="btn btn-secondary" href="/Admin/Edit/@m.Id">Редактировать</a> |
+                                        <form method="post" action="/Admin/Delete/@m.Id" style="display:inline">
+                                            <button class="btn btn-danger" type="submit" onclick="return confirm('Удалить?')">Удалить</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </thead>
+                        <tbody id="moviesTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="toast" class="toast"></div>
+    <div id="confirmDialog" class="confirm-dialog">
+        <div class="confirm-content">
+            <h3 id="confirmTitle"></h3>
+            <p id="confirmMessage"></p>
+            <div class="confirm-actions">
+                <button id="confirmCancel" class="btn btn-secondary">Отмена</button>
+                <button id="confirmOk" class="btn btn-danger">Подтвердить</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,505 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #000;
+    color: white;
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, #462512, #000);
+    border-bottom: 1px solid #333;
+    padding: 1rem 0;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #d0943c;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #d0943c;
+}
+
+.nav {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: #ccc;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+    .nav-link:hover {
+        color: #d0943c;
+        background: rgba(208, 148, 60, 0.1);
+    }
+
+.logout-btn {
+    color: #ff6b6b;
+}
+
+    .logout-btn:hover {
+        color: #ff5252;
+        background: rgba(255, 82, 82, 0.1);
+    }
+
+/* Main */
+.main {
+    padding: 2rem 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+    .page-header h1 {
+        font-size: 2.5rem;
+        color: #d0943c;
+        margin-bottom: 0.5rem;
+    }
+
+    .page-header p {
+        color: #ccc;
+        font-size: 1.1rem;
+    }
+
+/* Stats */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: rgba(70, 37, 18, 0.3);
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #d0943c, #b8822f);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .stat-icon i {
+        font-size: 1.5rem;
+        color: black;
+    }
+
+.stat-content h3 {
+    font-size: 1.8rem;
+    color: #d0943c;
+    margin-bottom: 0.25rem;
+}
+
+.stat-content p {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #d0943c, #b8822f);
+    color: black;
+}
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #b8822f, #a0701e);
+        transform: translateY(-1px);
+    }
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid #333;
+}
+
+    .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+.btn-danger {
+    background: rgba(255, 107, 107, 0.2);
+    color: #ff6b6b;
+    border: 1px solid #ff6b6b;
+}
+
+    .btn-danger:hover {
+        background: rgba(255, 107, 107, 0.3);
+    }
+
+/* Movies Section */
+.movies-section h2 {
+    color: #d0943c;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.movies-table-container {
+    background: rgba(70, 37, 18, 0.2);
+    border: 1px solid #333;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.movies-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .movies-table th {
+        background: rgba(208, 148, 60, 0.2);
+        color: #d0943c;
+        padding: 1rem;
+        text-align: left;
+        font-weight: 600;
+        border-bottom: 1px solid #333;
+    }
+
+    .movies-table td {
+        padding: 1rem;
+        border-bottom: 1px solid #333;
+        vertical-align: middle;
+    }
+
+    .movies-table tr:hover {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+.movie-poster {
+    width: 50px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #333;
+}
+
+.movie-title {
+    font-weight: 500;
+    color: white;
+}
+
+.movie-rating {
+    color: #d0943c;
+    font-weight: 500;
+}
+
+.movie-price {
+    color: #4CAF50;
+    font-weight: 500;
+}
+
+.movie-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.action-btn {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-btn {
+    background: rgba(33, 150, 243, 0.2);
+    color: #2196F3;
+}
+
+    .edit-btn:hover {
+        background: rgba(33, 150, 243, 0.3);
+    }
+
+.delete-btn {
+    background: rgba(255, 107, 107, 0.2);
+    color: #ff6b6b;
+}
+
+    .delete-btn:hover {
+        background: rgba(255, 107, 107, 0.3);
+    }
+
+/* Toast */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+    .toast.show {
+        transform: translateX(0);
+    }
+
+    .toast.success {
+        background: linear-gradient(135deg, #4CAF50, #45a049);
+    }
+
+    .toast.error {
+        background: linear-gradient(135deg, #f44336, #da190b);
+    }
+
+/* Confirm Dialog */
+.confirm-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.confirm-content {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+}
+
+    .confirm-content h3 {
+        color: #d0943c;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+    }
+
+    .confirm-content p {
+        color: #ccc;
+        margin-bottom: 2rem;
+        line-height: 1.5;
+    }
+
+.confirm-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #666;
+}
+
+    .empty-state i {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: #333;
+    }
+
+    .empty-state h3 {
+        margin-bottom: 0.5rem;
+        color: #ccc;
+    }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .logo {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .logo-image {
+        width: 40px;
+        height: 40px;
+    }
+
+    .logo-text {
+        font-size: 1.3rem;
+    }
+
+    .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .nav-link {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+        .nav-link span {
+            display: none;
+        }
+
+    .page-header h1 {
+        font-size: 2rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .stat-card {
+        padding: 1rem;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .movies-table-container {
+        overflow-x: auto;
+    }
+
+    .movies-table {
+        min-width: 600px;
+    }
+
+        .movies-table th,
+        .movies-table td {
+            padding: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+    .movie-poster {
+        width: 40px;
+        height: 60px;
+    }
+
+    .movie-actions {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .confirm-content {
+        padding: 1.5rem;
+    }
+
+    .confirm-actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 0.5rem;
+    }
+
+    .main {
+        padding: 1rem 0;
+    }
+
+    .stat-card {
+        padding: 0.75rem;
+    }
+
+    .stat-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .stat-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .movies-table th,
+    .movies-table td {
+        padding: 0.4rem;
+    }
+}
