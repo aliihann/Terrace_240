@@ -8,11 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-var connectionString = builder.Configuration["ConnectionStrings:Db"];
-builder.Services.AddDbContext<MainContext>(servcie =>
-{
-    servcie.UseSqlServer(connectionString);
-});
+//var connectionString = builder.Configuration["ConnectionStrings:Db"];
+builder.Services.AddDbContext<MainContext>(options =>
+    options.UseSqlite("Data Source=app.db"));
 
 // Simple cookie auth
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
